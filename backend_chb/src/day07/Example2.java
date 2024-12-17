@@ -31,7 +31,7 @@ public class Example2 {
 			System.out.print("1.콜라 2.사이다 3.환타 4.결제 : "); //[2]출력함수
 			Scanner scan = new Scanner(System.in); //[3]입력객체
 			int choose = scan.nextInt(); //[4]입력함수
-			if(choose ==1 ) { //콜라선택
+			if(choose == 1 ) { //콜라선택
 				if(p1.stock > 0) { //콜라의 재고가 존재하면
 					p1.stock--; p1.cart++;
 				}else {System.out.println("콜라 재고가 부족합니다.");
@@ -46,7 +46,7 @@ public class Example2 {
 				int total = (p1.cart * p1.price) + (p2.cart * p2.price) + (p3.cart * p3.price);
 				System.out.printf("바구니현황 : 콜라 %2d개, 사이다 %2d개, 환타 %2d개\n 총금액 : %d원\n" 
 						, p1.cart , p2.cart , p3.cart , total );
-				p1.cart = 0; p2.cart = 0; p3.cart = 0;
+				p1.cart = 0; p2.cart = 0; p3.cart = 0; // 장바구니 초기화
 			}
 			
 		} //while 문 end

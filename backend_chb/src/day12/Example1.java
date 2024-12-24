@@ -16,7 +16,7 @@ class BirthDay{ // class start
 public class Example1 { // class start 
 	public static void main(String[] args) { // main start
 		// 1. 인스턴스 생성 - 객체를 구현하기 위해 설계도(클래스) 를 메모리 할당 해서 실체물
-		BirthDay dDay = new BirthDay();  
+		BirthDay dDay = new BirthDay(); 
 		// 2. 인스턴스가 메소드를 호출 
 		dDay.printThis();	// day12.BirthDay@5305068a
 		// 3. 인스턴스의 멤버변수 값 대입 

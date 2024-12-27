@@ -1,5 +1,10 @@
 package day14.boardprogram99;
 
-public class AppStart {
+import day14.boardprogram99.view.BoardView;
 
+public class AppStart {// c start
+	public static void main(String[] args) {
+		
+		BoardView.getInstance().run();
+	}
 }

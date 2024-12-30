@@ -10,20 +10,23 @@ class 동물{
 	void showMe() {
 		System.out.println("myName : " + this.myName );
 	} // f end 
-} // class end 
+} // class end
+
 // [2] 조류 클래스 , 조류클래스는 동물 클래스로부터 상속받기 
 class 조류 extends 동물{
 	조류(){
 		myName = "조류";
 		System.out.println("[[ 조류 생성자 탄생 ]]");
 	}
-} // class end 
+} // class end
+
 // [3] 참새 클래스 , 참새클래스는 조류 클래스로부터 상속받기 
 class 참새 extends 조류{
 	참새(){ myName = "참새";
 		System.out.println("[[ 참새 생성자 탄생 ]]");
 	}
-} // class end 
+} // class end
+
 // [4] 닭 클래스 , 닭 클래스는 조류 클래스로부터 상속받기 
 class 닭 extends 조류 {
 	닭(){

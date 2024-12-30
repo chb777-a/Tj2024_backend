@@ -28,6 +28,14 @@ class 참새 extends 조류{
 	}
 }
 
+// [4] 닭 클래스 , 닭 클래스는 조류 클래스로부터 상속받기
+class 닭 extends 조류{
+	닭(){
+		myName = "닭";
+		System.out.println("[[닭 생성자 탄생]]");
+	}
+}
+
 public class Example1 {
 	public static void main(String[] args) {
 		//1. 동물 인스턴스 ( 객체 ) 생성
@@ -51,7 +59,13 @@ public class Example1 {
 
 			// *캐스팅* : 가능한 전체조건은 본래 하위 타입의 객체가 상위 타입에서 다시 본래 하위 타입 변환 허용.
 			// 즉] 부모 타입의 자료는 자식 타입으로 변환이 될 수 없지만 단, 객체가 본래 자식 타입의 객체였다면 가능하다.
-		동물 animal4 = sparrow; // 참새 타입의 객체를 동물 타입으로 변환.
-		참새 sparrow4 = (참새)sparrow;
-	}
+		동물 animal4 = sparrow; // 참새 타입의 객체를 동물 타입으로 변환
+		참새 sparrow4 = (참새)animal4; // 동물 타입은 참새 타입으로 변환 가능
+		
+			// 형제간의 타입변환이 불가능하다.
+		닭 chicken1 = new 닭(); // 인스턴스 (4개 생성)
+		//참새 sparrow5 = (참새)chicken1; 오류 // 닭은 참새를 모른다.
+		
+	} // main end
+	
 }//c end

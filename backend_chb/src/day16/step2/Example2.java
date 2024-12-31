@@ -3,9 +3,10 @@ package day16.step2;
 class 상위클래스{ //상위 start
 	int value1 = 10;
 	int value3 = 30;
-	//static int value3 = 30; : 멤버변수 공유
+	//static int value3 = 30; : 멤버변수 공유 (static)
 	//멤버변수는 공유 X // 변수는 (고유)값을 저장
 	//메소드는 공유 O // 메소드는 코드(실행, 행위 코드) 저장
+	public 상위클래스() {System.out.println("상위클래스 인스턴스 생성");}; // 생성자
 	public void showSuperValue() {
 		System.out.println("상위클래스");
 	}//show end
@@ -14,8 +15,10 @@ class 상위클래스{ //상위 start
 class 하위클래스 extends 상위클래스{ // 하위 start
 	int value1 = 100;
 	int value2 = 200;
+	public 하위클래스() {super(); System.out.println("하위클래스 인스턴스 생성");};
+						//super() : 생성자를 호출한 인스턴스의 상위 생성자를 가리킨다.
 	public void showSubValue() {
-		System.out.println("하위클래스" + (this.value1) + (super.value1));
+		System.out.println("하위클래스" + (this.value1) + "" + (super.value1));
 		//this : 100 // super : 10
 	}//show end
 } // 하위 end
@@ -41,6 +44,11 @@ public class Example2 { // c start
 		하위클래스 obj3 = new 하위클래스();
 		obj3.value1 = 300;
 		obj3.showSubValue(); // [하위클래스] 300 10
+		
+		//* 생성자
+		하위클래스 obj4 = new 하위클래스(); 
+			// 생성자 실행 총 횟수 : 하위 / 상위 / Object 3번
+			// 인스턴스 개수 : 3개
 		
 	}//main end
 }// c end

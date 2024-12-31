@@ -41,7 +41,7 @@ public class Example4 {
         myCar.run();
         yourCar.run();
 
-        System.out.println( myCar.tire instanceof  KumhoTire  );
+        System.out.println( myCar.tire instanceof KumhoTire  );
         if( myCar.tire instanceof Tire ){
             myCar.tire = new HankookTire();
         }

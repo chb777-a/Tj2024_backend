@@ -88,7 +88,12 @@ create table member( # 회원 테이블
 	constraint primary key( mno )	-- 회원번호를 pk필드로 선정 , not null 과 unique 포함 
 ); 
 create table board( # 게시판 테이블 
-	bno bigint auto_increment ,	# 게시물번호 는 자동번호를 부여하기 위해 auto_increment 사용 , 20억이상의 게시물번호를 표현하기 위해 bigint 사용.
+	bno bigint auto_increment ,	# 게시물번호
+	https://www.youtube.com/watch?v=ksuYwD1oC3A
+	위 링크와 같은 프로그램을 만들기 위한 DB 설계를 하시오.
+	[요구사항]
+	1. 여러개 카테고리중에 카테고리를 선택을 해서 카테고리 별로 제품들을 출력/확인 한다.
+	2. 해당 제품을 선택해서 수량 입력받아 주문처 는 자동번호를 부여하기 위해 auto_increment 사용 , 20억이상의 게시물번호를 표현하기 위해 bigint 사용.
     btitle varchar(100) not null ,  # 게시물제목 은 공백을 없애기 위해 not null 사용 , 문자가 최대 100글자까지 가능하도록 사용
     bcontent text , # 게시물내용 은 공백을 허용하고 , 최대 4GB 까지 대용량 입력 가능하도록 사용 
     bdate datetime default now() , # 게시물작성일 에는 default 기본값에 now() 함수를 사용하면 자동으로 시스템 날짜/시간이 삽입된다.
@@ -99,12 +104,7 @@ create table board( # 게시판 테이블
 );
 
 # SQL 과제1 : 키오스크 개발의 메모리 설계 하고 DB와 테이블 생성을 SQL로 작성하여 제출 하시오.
-/*
-	https://www.youtube.com/watch?v=ksuYwD1oC3A
-	위 링크와 같은 프로그램을 만들기 위한 DB 설계를 하시오.
-	[요구사항]
-	1. 여러개 카테고리중에 카테고리를 선택을 해서 카테고리 별로 제품들을 출력/확인 한다.
-	2. 해당 제품을 선택해서 수량 입력받아 주문처리 한다. 단, 하나의 주문의 여러개 제품을 주문할수있다.
+/*리 한다. 단, 하나의 주문의 여러개 제품을 주문할수있다.
 	3. 주문번호를 받아서 대기한다.
 	4. 설계 조건
 		1. [ 메모리 설계 필수 속성 ]	

@@ -17,7 +17,7 @@ class D extends B{ // 부모 : B , 자식 :
 } // D end
 
 class E extends C{ // 부모 : C , 자식 :
-	
+
 } // E end
 
 public class Example1 { // c start
@@ -35,7 +35,6 @@ public class Example1 { // c start
 		B b1 = b;
 		B b3 = d;
 		// B b2 = c; // B b4 = e; // 형제간의 타입 변환은 불가능하다.
-
 		C c2 = c;
 		C c4 = e;
 		//C c1 = b; //C c3 = d; // 형제간의 타입 변환은 불가능하다.
@@ -43,14 +42,14 @@ public class Example1 { // c start
 		//[2] 강제 타입변환 , 명시적 타입변환 , 캐스팅
 		B b5 = (B)a1; // A타입을 B타입으로 변환
 		E e5 = (E)a4; // A타입을 E타입으로 변환
-		
 		//E e6 = (E)a1; // A타입을 E타입으로 변환 // 오류 발생
 		//D d6 = (D)a2; // A타입을 D타입으로 변환 // 오류 발생
 		
-		//[3] 본래의 인스턴스를 확인 방법 , instanceof 키워드
+		//[3] 본래의 인스턴스를 확인 방법 , instanceof 키워드 , 남이 만든 클래스에 대해 참조를 확인할 때 사용
 		System.out.println(a1 instanceof A); // a1변수가 참조하는 인스턴스에 A타입이 존재하는가? true
-		System.out.println(a1 instanceof Object); // a1변수가 참조하는 인스턴스에 object타입도 존재하는가? true
+		System.out.println(a1 instanceof Object); // a1변수가 참조하는 인스턴스에 Object타입도 존재하는가? true
 		System.out.println(a1 instanceof C); // a1변수가 참조하는 인스턴스에 C타입이 존재하는가? false
+		System.out.println(a4 instanceof B); // a4변수가 참조하는 인스턴스에 B타입이 존재하는가? false
 		
 		
 	}//main end

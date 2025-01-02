@@ -11,12 +11,11 @@ public interface InterfaceTest {
 		//(2) 상수만들기 2 : public static final 키워드
 		public static final int value3 = 10;
 		
-		
 	//2. 추상 메소드
 		//int method1 (int a) {}; // 오류 : 일반 메소드는 인터페이스가 갖지 못한다.
 		//(1) 추상 메소드 만들기1
 		int method2 (int a);
 		//(2) 추상 메소드 만들기2
 		abstract int method3(int a);
-		
-}
+		 
+} //interface end

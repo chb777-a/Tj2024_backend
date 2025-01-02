@@ -20,10 +20,10 @@ stock_quantity: 150
 insert into products ( product_id , product_name , category , price , stock_quantity ) values ( 201 , 'Wireless Mouse' , 'Electronics' , 29.99 , 150 );
 
 [문제3]: employees 테이블에서 모든 직원의 first_name과 email을 조회하세요.
-select first_name , first_name from employees;
+select first_name , email from employees;
 
 [문제4]: products 테이블에서 price가 1000 인 제품의 product_name과 price를 조회하세요.
-select product_name , price from products;
+select product_name , price from products where price = 1000;
 
 [문제5]: employees 테이블에서 employee_id가 101인 직원의 email을 'john.doe@company.com'으로 업데이트하세요.
 update employees set email = 'john.doe@company.com' where employee_id = 101;

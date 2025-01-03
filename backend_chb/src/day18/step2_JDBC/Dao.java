@@ -43,7 +43,7 @@ public class Dao {
 			// (4) SQL 실행 결과 반환 받기 
 			int count = ps.executeUpdate();	
 			// (5) 반환 결과를 조작하기 
-			if( count == 1 ) { System.out.println("[insert 성공]"); return; }
+			if( count == 1 ) { System.out.println("insert 성공"); return; }
 		}catch( SQLException e ) { System.out.println( e );}
 		System.out.println("[insert 실패]");
 		
@@ -68,7 +68,35 @@ public class Dao {
 	}
 	
 	// 3. update 함수 
+	public void update() {
+		try{
+				//(1) SQL 작성
+			String sql = "update user set uname='강호동' where uno =2";
+			//(2) SQL 기재
+			PreparedStatement ps = conn.prepareStatement(sql);
+			//(3) 기재된 SQL 실행하고 반환받기
+			int count = ps.executeUpdate();
+			//(4) 반환 결과 제어
+			if(count ==1) {
+				System.out.println("update 성공");
+				return;
+				}
+		}catch(SQLException e) {System.out.println(e);}
+		System.out.println("update 실행");
+		}
 	
 	// 4. delete 함수 
+	public void delete() {
+		try {
+			String sql = "delete from user where uno = 1";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			int count = ps.executeUpdate();
+			if(count == 1) {
+				System.out.println("delete 성공");
+				return;
+				}
+		}catch(SQLException e) {System.out.println(e);}
+		System.out.println("delete 실패");
+		}
 	
 } // class ned 

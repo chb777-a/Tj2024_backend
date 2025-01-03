@@ -61,6 +61,8 @@ public class Example2 {
 			System.out.println(e2);
 		} catch(NullPointerException e3) {
 			System.out.println(e3);
+		} catch(Exception e) { //만약에 다중 catch에서 부모클래스와 Exception 사용할 경우에는 마지막에 catch
+			System.out.println(e);
 		}
 		finally {// finally{} : 주로 안전하게 메모리 초기화
 			System.out.println("예외 여부 상관없이 무조건 실행코드");

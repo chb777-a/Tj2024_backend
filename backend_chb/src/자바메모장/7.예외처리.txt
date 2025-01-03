@@ -34,3 +34,15 @@
 				등등등등등등
 			
 			- 실행 예외
+				- NullPointerException
+				- ArrayIndexoutOfBoundsException
+				- InputMismatchException
+				- NumberFormatException
+				등등등
+				
+	6. 예외 떠넘기기/던지기
+		- 여러 곳에서 발생하는 예외를 특정한 곳에서 한번에 처리할 경우 주로 사용
+		- 메소드에서 발생하는 예외를 메소드를 호출한 곳으로 예외 보내는 방법
+		- 예외 던지기 문법
+			반환타입 메소드명( 타입 매개변수 ) throws 예외클래스 { };
+			

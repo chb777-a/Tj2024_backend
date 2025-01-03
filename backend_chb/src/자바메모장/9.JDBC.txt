@@ -1,0 +1,4 @@
+[JDBC]
+	1. [J]JAVA [D]DATE [B]BASE [C]CONNECT : 자바 데이터베이스 연동
+		-> JAVA와 DB 연동하는 기술
+	2.

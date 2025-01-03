@@ -1,4 +1,4 @@
-package day18.step2;
+package day18.step2_JDBC;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

@@ -189,3 +189,8 @@ select mid as 회원아이디 , avg(bprice) as 구매가격평균 from buy where
 select mid as 회원아이디 , avg(bprice) as 구매가격평균 from buy where bamount > 2 group by 회원아이디 having 구매가격평균 >= 50 order by 구매가격평균 desc;
 # 5. 구매가격평균 상위 2개만 조회
 select mid as 회원아이디 , avg(bprice) as 구매가격평균 from buy where bamount > 2 group by 회원아이디 having 구매가격평균 >= 50 order by 구매가격평균 desc limit 0 , 2;
+
+# *** select 사용시 여러 절이 있을 때 작성순서 :
+#      select 속성명 from 테이블명 where 조건절 group by 그룹속성명 having 그룹조건 order by 정렬속성명 정렬기준 limit 시작번호 , 개수;
+      
+# ** select 를 컴퓨터가 처리하는 순서 :  select[3] from[1] where[2] group by[4] having[5] order by[6] limit[7]

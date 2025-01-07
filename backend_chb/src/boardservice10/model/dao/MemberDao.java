@@ -2,6 +2,10 @@ package boardservice10.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import boardservice10.model.dto.MemberDto;
 
 public class MemberDao {
 	private Connection conn; // DB와 연동된 결과를 조작하는 인터페이스
@@ -23,4 +27,19 @@ public class MemberDao {
 		} //catch end
 	}// MemberDao end
 	public static MemberDao getInstance() {return instance;}
-}
+	
+	//1. 회원가입 SQL 처리 메소드
+	public boolean signup( MemberDto memberDto) {
+		try{
+			//[1] SQL 작성
+			String sql = "insert into member( mid , mpwd , mname , mphone )values('"+memberDto.getMid()+"' , '"+memberDto.getMpwd()+"' , '"+memberDto.getMname()+"' , '"+memberDto.getMphone()+"')"; 
+			//[2] DB의 연동된 곳에 SQL 기재한다. 연동된 db에 sql을 기재하는 방법 : conn.prepareStatement(SQL)
+			PreparedStatement ps = conn.prepareStatement(sql);
+			//[3] 기재된 SQL을 실행하고 결과 받기 기재된 sql을 실행하는 방법 : ps.excuteUpdate()
+			int count = ps.executeUpdate();
+			//[4] 결과에 따른 처리 및 반환을 한다.
+			if( count == 1) {return true;}
+		}catch(SQLException e) {System.out.println(e);}
+		return false;
+	} // signup end
+}// c end

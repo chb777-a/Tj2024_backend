@@ -17,6 +17,25 @@ public class MemberController {
 		return result;
 	}
 	
+	//2. 로그인 컨트롤러 메소드
+	private int loginMno = 0;
+	public int getLoginMno() {return loginMno;} // BoardController 
+	//0이면 비로그인상태 , 0초과이면 로그인상태 = 번호 = 즉 로그인한 회원번호 , PK
+	
+	public boolean login( MemberDto memberDto) {
+		
+		int result = MemberDao.getInstance().login(memberDto);
+		//boolean ==> int로 바꾼 이유 : 로그인 성공한 회원번호를 내부적으로 저장하기 위해 (로그인 증거를 controller에 저장)
+		//회원번호(1번부터 시작) 를 반환받아서 0이면 없는 회원번호 , 0 초과이면 있는 회원번호 ( 설계에 따라서 )
+		if( result > 0) { // 0보다 크면 로그인 성공
+			loginMno = result; // 로그인 성공시 로그인저장변수에 로그인성공한 회원번호를 저장
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
 	//3. 아이디찾기 컨트롤러 메소드
 	public String findId(MemberDto memberDto) {
 		// 유효성 검사 넣을 예정
@@ -29,5 +48,10 @@ public class MemberController {
 		// 유효성 검사 넣을 예정
 		String result = MemberDao.getInstance().findPwd(memberDto);
 		return result;
+	}
+	
+	//5. 로그아웃 컨트롤러 메소드
+	public void logout() {
+		loginMno= 0;
 	}
 } // c end

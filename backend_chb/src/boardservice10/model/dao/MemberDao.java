@@ -44,13 +44,38 @@ public class MemberDao {
 		return false;
 	} // signup end
 	
-	//3. 아이디 찾기 SQL 처리 메소드
-	public String findId( MemberDto memberdto) {
-		try{ // 검사
+	//2. 로그인 SQL 처리 메소드
+	public int login( MemberDto memberDto) {
+		//int : SQL로 조회된 회원번호를 반환하기 위해서
+		try {
 			//[1] SQL 작성
-		String sql = "selectt mid from member where mname = '유재석' and mphone = '010-3333-3333'";
-		//[2] DB와 연동된 곳에 SQL 기재
+			String sql = "select mno from member where mid = ? and mpwd = ?";
+			//[2] DB와 연동된 곳에 SQL 기재
+			PreparedStatement ps = conn.prepareStatement(sql);
+			//[*] 기재된 SQL에 매개변수 값을 대입
+				ps.setString(1, memberDto.getMname());
+				ps.setString(2, memberDto.getMpwd());
+			//[3] 기재된 SQL을 실행하고 결과 받기
+			ResultSet rs = ps.executeQuery();
+			//[4] 결과에 따른 처리 및 반환
+			if(rs.next()) {
+				int mno = rs.getInt("mno");
+				return mno;
+			}//if end
+		}catch(SQLException e) {System.out.println(e);}
+		return 0;
+	} //login end
+	
+	//3. 아이디 찾기 SQL 처리 메소드
+	public String findId( MemberDto memberDto) {
+		try{ // 검사
+		//[1] SQL 작성		// mname = '유재석' ---> mname = ? : mname는 어떤 값이 들어갈지 정해져 있지 않다. (매개변수)
+		String sql = "selectt mid from member where mname = ? and mphone = ? ";
+		//[2] DB와 연동된 곳에 SQL 기재 + ? 매개변수 값 대입
 		PreparedStatement ps = conn.prepareStatement(sql);
+			//ps.setString(1 , "유재석"); //ps.setString() : mname이 String 타입이라서
+			ps.setString(1, memberDto.getMname());
+			ps.setString(2, memberDto.getMphone());
 		//[3] 기재된 SQL을 실행하고 결과 받기
 		ResultSet rs = ps.executeQuery();
 		//[4] 결과에 따른 처리 및 반환
@@ -64,17 +89,20 @@ public class MemberDao {
 	} // findId end
 	
 	//4. 비밀번호 찾기 SQL 처리 메소드
-	public String findPwd( MemberDto memberdto) {
+	public String findPwd( MemberDto memberDto) {
 		try {
 		//[1] SQL 작성
-			String sql = "select * from member where mid = 'qwe123' and mphone = '010-3333-3333'";
+			String sql = "select * from member where mid = ? and mphone = ?";
 		//[2] DB와 연동된 곳에 SQL 기재
+			//ps.setString(1 , "qwe1234"); //ps.setString() : mid이 String 타입이라서
 			PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setString(1, memberDto.getMid());
+				ps.setString(2, memberDto.getMphone());
 		//[3] 기재된 SQL을 실행하고 결과 받기
 			ResultSet rs = ps.executeQuery();
 		//[4] 결과에 따른 처리 및 반환
 			if(rs.next()) {
-				String findPwd = rs.getString("mpwd"); 
+				String findPwd = rs.getString("mpwd");
 				return findPwd;// 찾은 아이디 반환
 			}//if end
 		}catch(SQLException e) {System.out.println(e);}

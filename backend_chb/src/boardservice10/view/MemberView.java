@@ -47,10 +47,29 @@ public class MemberView {
 		}else {System.out.println("회원가입 실패");}
 	}
 	
-	//2. 아이디 찾기 화면 메소드
+	//2. 로그인 화면 메소드
+	public void login() {
+		//[1] 입력
+		System.out.println("ID : "); String mid = scan.next();
+		System.out.println("Password : "); String mpwd = scan.next(); // documentQuerySelector (html)
+		//[2] 객체화 / 데이터포장 view -> controller 이동
+		MemberDto memberDto = new MemberDto();
+		memberDto.setMid(mid);
+		memberDto.setMpwd(mpwd);
+		
+		//[3] 컨트롤러에게 전달 후 응답 결과 받기
+		boolean result = MemberController.getInstance().login(memberDto);
+		//[4] 컨트롤러의 결과에 따른 처리
+		if(result) {
+			System.out.println("로그인 성공");
+		}else {System.out.println("로그인 실패");}
+		
+	} // login end
+	
+	//3. 아이디 찾기 화면 메소드
 	public void findId() {
 		//[1] 입력
-		System.out.println("이름 : "); String mname = scan.next();
+		System.out.println(" 이름 : "); String mname = scan.next();
 		System.out.println(" 전화번호 : "); String mphone = scan.next();
 		
 		//[2] 객체화 / 데이터포장 ( view에서 controller 이동 )
@@ -70,7 +89,7 @@ public class MemberView {
 	}
 
 	
-	//3. 비밀번호 찾기 화면 메소드
+	//4. 비밀번호 찾기 화면 메소드
 	public void findPwd() {
 		// [1] 입력
 		System.out.println("아이디 : "); String mid = scan.next();
@@ -84,6 +103,12 @@ public class MemberView {
 		//[4] 컨트롤러의 결과에 따른 처리
 		if(result!=null) {System.out.println("찾은 비밀번호 : " + result);}
 		else {System.out.println("일치한 회원 정보 없음");}
+	}
+	
+	//5. 로그아웃 화면 메소드
+	public void logout() {
+		MemberController.getInstance().logout();
+		System.out.println("로그아웃 완료");
 	}
 	
 }// c end

@@ -23,7 +23,7 @@ public class MemberView {
 				signup();
 			}
 			else if(choose == 2) {
-				
+				login();
 			}
 			else if(choose == 3) {
 				findId();
@@ -109,6 +109,42 @@ public class MemberView {
 	public void logout() {
 		MemberController.getInstance().logout();
 		System.out.println("로그아웃 완료");
+	} //logout end
+	
+	//6. 내 정보 보기 메소드
+	public void myInfo() {
+		//컨트롤러에게 응답 받기
+		// 받는 곳 = MemberController.getInstance().myInfo(주는 곳);
+		MemberDto result = MemberController.getInstance().myInfo();
+		System.out.println("========== 마이 페이지 ==========");
+		System.out.println("mid : " + result.getMid());
+		System.out.println("mname : " + result.getMname());
+		System.out.println("mphone : " + result.getMphone());
+		System.out.println("mdate : " + result.getMdate());
+		//서브 메뉴
+		while(true) {
+			System.out.println("1.회원수정 2.회원탈퇴 3.뒤로가기");
+			int choose2 = scan.nextInt();
+			if(choose2 == 1) {
+				
+			}
+			else if(choose2 == 2) {
+				delete(); break;
+			}
+			else if(choose2 == 3) {
+				break; // 메뉴에서 무한반복 탈출 // w end - > f end
+			}
+		} // w end
+		
 	}
 	
+	//7. 회원탈퇴 화면 메소드
+	public void delete() {
+		System.out.println("회원 탈퇴 하시겠습니까? 0.예 1.취소"); // 입력으로 처리
+		int choose2 = scan.nextInt();
+		if(choose2 == 0) {
+			MemberController.getInstance().delete(); // 탈퇴처리 컨트롤러 요청
+			logout(); // 탈퇴 처리시 로그아웃
+		}
+	}
 }// c end

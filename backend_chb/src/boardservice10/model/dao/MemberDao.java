@@ -108,4 +108,39 @@ public class MemberDao {
 		}catch(SQLException e) {System.out.println(e);}
 		return null; // 못 찾음 null 반환
 	}
+	
+	//6. 내정보보기 SQL 처리 메소드 
+	public MemberDto myInfo(int loginMno) {
+		try{
+		//[1] SQL 작성
+		String sql = "select * from member where mno = ?";
+		//[2] DB와 연동된 곳에 SQL 기재
+		PreparedStatement ps = conn.prepareStatement(sql);
+		//[*] 기재된 SQl에 매개변수 값 대입
+			ps.setInt(1, loginMno);
+		//[3] 기재된 SQL 실행하고 결과를 받는다
+		ResultSet rs = ps.executeQuery();
+		//[4] 결과에 따른 처리 및 반환
+		if(rs.next()) {
+			MemberDto memberDto = new MemberDto();
+			memberDto.setMid(rs.getString("mid"));
+			memberDto.setMname(rs.getString("mname"));
+			memberDto.setMphone(rs.getString("mphone"));
+			memberDto.setMdate(rs.getString("mdate"));
+			return memberDto; // 조회된 회원정보를 반환
+		}//if end
+		}catch(SQLException e) {System.out.println(e);}
+		return null; // 조회된 회원 정보가 없을 시 null 반환
+	} // myInfo end
+	
+	//7. 회원탈퇴 SQL 처리 메소드
+	public void delete(int loginMno) {
+		try {
+			String sql = "delete from member where mno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1, loginMno);
+			int count = ps.executeUpdate();
+		}catch(SQLException e) {System.out.println(e);}
+		return;
+	}// delete end
 }// c end

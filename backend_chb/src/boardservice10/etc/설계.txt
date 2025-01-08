@@ -59,6 +59,17 @@
 		0. DB Connect
 			- JDBC : 자바와 DB의 연동 라이브러리 
 			- DB연동코드 
+		
+		1. 회원가입 view - 회원가입 controller - 회원가입dao
+		2. 아이디 찾기 : view -> controller - dao
+		3. 비밀번호 찾기 : view -> controller - dao
+		4. 로그인 : view -> controller - dao
+		5. 로그아웃 : view -> controller
+		6. 내정보조회 : view -> controller - dao
+		7. 회원탈퇴 : view -> controller - dao
+		8. 회원수정 : view -> controller - dao
+		
+		* 디자인 패턴이란 : 프로그래밍 설계 과정에 자주 발생되는 문제점을 해결하는 설계 방법 제시
 			
 		1. 회원가입view - 회원가입controller - 회원가입dao
 		2. 로그인view - 로그인controller - 로그인dao

@@ -3,6 +3,7 @@ package boardservice10.model.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import boardservice10.model.dto.MemberDto;
@@ -42,4 +43,41 @@ public class MemberDao {
 		}catch(SQLException e) {System.out.println(e);}
 		return false;
 	} // signup end
+	
+	//3. 아이디 찾기 SQL 처리 메소드
+	public String findId( MemberDto memberdto) {
+		try{ // 검사
+			//[1] SQL 작성
+		String sql = "selectt mid from member where mname = '유재석' and mphone = '010-3333-3333'";
+		//[2] DB와 연동된 곳에 SQL 기재
+		PreparedStatement ps = conn.prepareStatement(sql);
+		//[3] 기재된 SQL을 실행하고 결과 받기
+		ResultSet rs = ps.executeQuery();
+		//[4] 결과에 따른 처리 및 반환
+		if(rs.next()) { //.next 다음 레코드로 이동
+			String findMid = rs.getString("mid");
+			return findMid; // 찾음 / 찾은 아이디 반환
+		}//if end
+	}// try end
+	catch(SQLException e) {System.out.println(e);}
+	return null; // 못찾음 null 반환
+	} // findId end
+	
+	//4. 비밀번호 찾기 SQL 처리 메소드
+	public String findPwd( MemberDto memberdto) {
+		try {
+		//[1] SQL 작성
+			String sql = "select * from member where mid = 'qwe123' and mphone = '010-3333-3333'";
+		//[2] DB와 연동된 곳에 SQL 기재
+			PreparedStatement ps = conn.prepareStatement(sql);
+		//[3] 기재된 SQL을 실행하고 결과 받기
+			ResultSet rs = ps.executeQuery();
+		//[4] 결과에 따른 처리 및 반환
+			if(rs.next()) {
+				String findPwd = rs.getString("mpwd"); 
+				return findPwd;// 찾은 아이디 반환
+			}//if end
+		}catch(SQLException e) {System.out.println(e);}
+		return null; // 못 찾음 null 반환
+	}
 }// c end

@@ -16,4 +16,18 @@ public class MemberController {
 		boolean result = MemberDao.getInstance().signup(memberDto);
 		return result;
 	}
+	
+	//3. 아이디찾기 컨트롤러 메소드
+	public String findId(MemberDto memberDto) {
+		// 유효성 검사 넣을 예정
+		String result = MemberDao.getInstance().findId(memberDto);
+		return result;
+	}
+	
+	//4. 비밀번호 찾기 컨트롤러 메소드
+	public String findPwd(MemberDto memberDto) {
+		// 유효성 검사 넣을 예정
+		String result = MemberDao.getInstance().findPwd(memberDto);
+		return result;
+	}
 } // c end

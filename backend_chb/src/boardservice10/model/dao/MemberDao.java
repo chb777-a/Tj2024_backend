@@ -53,7 +53,7 @@ public class MemberDao {
 			//[2] DB와 연동된 곳에 SQL 기재
 			PreparedStatement ps = conn.prepareStatement(sql);
 			//[*] 기재된 SQL에 매개변수 값을 대입
-				ps.setString(1, memberDto.getMname());
+				ps.setString(1, memberDto.getMid());
 				ps.setString(2, memberDto.getMpwd());
 			//[3] 기재된 SQL을 실행하고 결과 받기
 			ResultSet rs = ps.executeQuery();
@@ -70,7 +70,7 @@ public class MemberDao {
 	public String findId( MemberDto memberDto) {
 		try{ // 검사
 		//[1] SQL 작성		// mname = '유재석' ---> mname = ? : mname는 어떤 값이 들어갈지 정해져 있지 않다. (매개변수)
-		String sql = "selectt mid from member where mname = ? and mphone = ? ";
+		String sql = "select mid from member where mname = ? and mphone = ? ";
 		//[2] DB와 연동된 곳에 SQL 기재 + ? 매개변수 값 대입
 		PreparedStatement ps = conn.prepareStatement(sql);
 			//ps.setString(1 , "유재석"); //ps.setString() : mname이 String 타입이라서
